@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Resume</title>
+    <script src="https://rawgit.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&family=Oswald:wght@700&family=Roboto:wght@300;400;500;700&family=Tourney&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            color: #333;
+            background-color: #f9f9f9;
+            overflow: scroll;
+        }
+        
+        ::-webkit-scrollbar {
+            width: 0.5em;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #939393;
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: #4b4a4a;
+        }
+
+        header {
+            margin-top: 5%;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #161617;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: underline;
+        }
+
+        section {
+            margin-bottom: 30px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .right-column ul,
+        .right-column p {
+            margin-left: 6px;
+            padding-left: 20px;
+        }
+
+        li::before {
+            content: "\2022";
+            margin-right: 8px;
+            color: #0c0c15;
+        }
+
+        /* .left-column section:nth-child(2) li::before,
+        .left-column section:nth-child(3) li::before {
+            content: '';
+        }
+
+        .left-column section:nth-child(2) ul,
+        .left-column section:nth-child(3) ul {
+            margin-left: 15px;
+        } */
+
+        button {
+            color: #fff;
+            background-color: #444;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: background-color 0.3s ease;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            border: none;
+        }
+        button.mini-btn{
+            display: none;
+
+        }
+
+        button:hover {
+            background-color: #222;
+        }
+
+        .container {
+            width: 80%;
+            display: flex;
+            justify-content: space-between;
+            margin: 0 auto;
+        }
+
+        .left-column {
+            width: 20%;
+        }
+
+        .right-column {
+            width: 75%;
+        }
+
+        #resume-container {
+            width: 95%;
+            height: 95%;
+            margin: auto;
+            margin-bottom: 10%;
+            margin-top: 6%;
+        }
+
+        h1 {
+            font-size: 3em;
+            line-height: 1em;
+            font-family: 'Oswald', sans-serif;
+        }
+
+        i,
+        h2 {
+            display: inline;
+        }
+
+        h2 {
+            padding-left: 15px;
+        }
+
+        section {
+            width: 100%;
+        }
+
+        span.ruler {
+            border-left: 2px solid rgb(0, 0, 0);
+            display: block;
+            margin-left: 8px;
+        }
+
+        .circle-symbols {
+            position: relative;
+        }
+
+        .circle-symbols:before {
+            color: rgb(243, 243, 243);
+            ;
+            content: '.';
+            height: 10px;
+            width: 10px;
+            border-radius: 50%;
+            background: rgb(243, 243, 243);
+            border: 2px solid black;
+            top: 1px;
+            left: -13px;
+            position: absolute;
+        }
+
+        span.heading-detail {
+            display: inline-block;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        span.heading-detail i {
+            padding-right: 6px;
+        }
+        .mini-detail{
+            display: none;
+        }
+        @media only screen and (max-width: 900px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .right-column,
+            .left-column {
+                width: 100%;
+            }
+
+            .left-column section ul li {
+                display: inline-block;
+                font-size: smaller;
+            }
+
+            .left-column section h2 {
+                font-size: small;
+            }
+
+            .left-column {
+                display: flex;
+                justify-content: space-between;
+            }
+            .left-column section:nth-child(3){
+                display: none ;
+            }
+            .mini-detail{
+                display: inline-block;
+            }
+              button{display: none;}
+            button.mini-btn{
+                display: inline-block;
+                background-color: transparent;
+                color: #000000;
+                animation: shake 1s ease-in-out infinite ;
+            }
+            button.mini-btn i{
+                font-size: 25px;
+            }
+                 @keyframes shake {
+                0%,100%{
+                    padding-top: 0px;
+                }
+                50%{
+                    padding-top: 5px;
+                }
+
+                
+            }
+        }
+        @media only screen and (max-width:470px){
+            header{
+                margin-top: 15%;
+            }           
+          
+       
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="resume-container">
+
+        <header>
+            <h1>AMBROSE OTHNIEL</h1>
+            <p><span class="heading-detail">FRONT END DEVELOPER</span> <span
+                    class="heading-detail"><i class="fa-solid fa-location-dot"></i>LAGOS,NIGERIA</span> <span
+                    class="heading-detail"><i class="fa-solid fa-phone"></i>+2348085186024</span></p>
+        </header>
+
+        <div class="container">
+            <div class="left-column">
+                <section>
+                    <h2>SKILLS</h2>
+                    <ul>
+                        <li>HTML5</li>
+                        <li>CSS3</li>
+                        <li>JavaScript</li>
+                        <li>Bootstrap</li>
+                        <li>Sass</li>
+                        <li>Tailwind CSS</li>
+                        <li>GSAP</li>
+                        <li>Git</li>
+                        <li>React (In Progress)</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>LINKS</h2>
+                    <ul>
+                        <li><a href="https://broseey.dev" target="_blank">Portfolio</a></li>
+                        <li><a href="https://github.com/Broseey" target="_blank">Github</a></li>
+                        <li><a href="www.linkedin.com/in/ ambrose-othniel" target="_blank">Linkedn</a></li>
+                    </ul>
+                    <span class="mini-detail">
+                    <h2>LANGUAGE</h2>
+                    <ul>
+                        <li>English</li>
+                    </ul>
+                    </span>
+                </section>
+                <section>
+                    <h2>LANGUAGE</h2>
+                    <ul>
+                        <li>English</li>
+                    </ul>
+                </section>
+            </div>
+            <div class="right-column">
+                <section class="profile">
+                    <i class="fa-solid fa-user"></i>
+                    <h2>Profile</h2>
+                    <span class="ruler">
+                        <p class="circle-symbols">Results-driven Front-End Developer with expertise in HTML, CSS,
+                            JavaScript, Bootstrap, Gsap ,and Tailwind CSS with SASS. Currently expanding skills by
+                            delving into React. Proven track record in developing dynamic and user-friendly
+                            interfaces.
+                        </p>
+                    </span>
+                </section>
+                <section class="experience">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <h2>Work Experience</h2>
+                    <span class="ruler">
+                        <p class="circle-symbols"><strong>Freelance Web Developer </strong><br /> July 2023 –
+                            Present</p>
+                        <ul>
+
+                            <li>Succesfully transitioned from personal projects undertaken between 2020 and 2023 to freelancing upon completing my undergraduate studies in june 2023</li>
+                            <li>Developed Convoservice, a dynamic and user-friendly web app for a transport company in
+                                Ado-Ekiti, Nigeria. 
+                                <ul>
+                                    <li>Enabled clients to seamlessly book rides within the city, enhancing user experience and accessibility</li>
+                                    <li>implemented integration with a form API for streamlined data processing, 
+                                        optimizing the overall efficiency of the booking system</li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                        <p class="circle-symbols"><strong>Freelance Portfolio Developer</strong><br /> July 2023 –
+                            Present</p>
+                        <ul>
+                            Designed and implemented visually appealing portfolio websites for various clients,
+                            including a portfolio for a designer. The goal was to enhance their ability to showcase
+                            their work effectively to potential clients and employers.
+                            <li>Created a portfolio website for a designer to showcase their work and skills.</li>
+                            <li>Designed and developed portfolio site demos for potential clients.</li>
+                        </ul>
+                    </span>
+                </section>
+                <section>
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <h2>Education</h2>
+                    <span class="ruler">
+                        <p class="circle-symbols"><strong>Bachelor of Science in Computer Engineering</strong></p>
+                        <p>Afe Babalola University Ado Ekiti (ABUAD)</p>
+                        <p>September 2018 - June 2023 (5 years)</p>
+                    </span>
+                </section>
+                <section class="projects">
+                    <i class="fa-solid fa-clipboard"></i>
+                    <h2>Projects</h2>
+                    <span class="ruler">
+                        <p class="circle-symbols"><strong>Personal Projects</strong></p>
+                        <ul>
+                            Developed a visually striking gallery website, a well-laid-out real estate website, and a
+                            web app for curated music playlists. These projects demonstrate a commitment to creating
+                            aesthetically pleasing and functionally rich websites.
+                            <li>Real Estate Site - Developed real estate website for realtors, providing a platform for
+                                showcasing property listings and facilitating direct contact with agent.</li>
+                            <li>Art Gallery Site - Developed a website for an art gallery to exhibit artwork.</li>
+                            <li>Music Player Site - Created a site that plays your favorite music and displays the
+                                artist's picture.</li>
+                        </ul>
+                        <p>Explore more projects on my <a href="https://broseey.dev" target="_blank">portfolio</a>. <br />
+                            I'm available to discuss my projects in greater detail at a scheduled time. Feel free to
+                            request additional information about methodologies, technologies, and outcomes at your
+                            convenience.</p>
+                    </span>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <button onclick="generatePDF()">Download as PDF <i class="fa-solid fa-file-arrow-down"></i> </button>
+    <button class="mini-btn" onclick="generatePDF()"> <i class="fa-solid fa-download"></i></button>
+    
+    <script>
+        function generatePDF() {
+            const element = document.getElementById('resume-container');
+    
+            // Set the page size to a custom size (e.g., 'a4', 'letter', or an array [width, height]).
+            const options = {
+                margin: 1,
+                filename: 'resume.pdf',
+                html2canvas: { scale: 4 }, // Increase scale for better quality
+                jsPDF: {
+                    unit: 'mm',
+                    format: 'a4',
+                    orientation: 'portrait',
+                    compress: true, // Compress the PDF to reduce file size
+                },
+            };
+    
+            html2pdf(element, options);
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script> 
+    <script>
+        const lenis = new Lenis()
+
+        lenis.on('scroll', (e) => {
+        console.log(e)
+        })
+
+        function raf(time) {
+        lenis.raf(time)
+        requestAnimationFrame(raf)
+        }
+
+        requestAnimationFrame(raf)
+    </script>
+    
+</body>
+
+</html>
